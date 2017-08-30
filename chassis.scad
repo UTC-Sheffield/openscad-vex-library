@@ -1,5 +1,5 @@
-//worksace
-chassis();
+//example:
+//chassis();
 module chassis() {
 	height = 3;
 	width = 9;
