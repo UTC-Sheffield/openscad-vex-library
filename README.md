@@ -1,9 +1,21 @@
 # scad-vex-library
 
-Attempting to do super quick VEX Designs in code. I don't know how easy it will be to paramatize attachmentment points using hole distances etc. 
+Attempting to do super quick VEX Designs in code. 
 
-This was a library to build vex parts with a 3D printer and openSCAD, so it will take a fair amount of work.
+This was a library to build vex parts with a 3D printer and openSCAD, so it will take a fair amount of work. I don't know how easy it will be to paramatize attachmentment points using hole distances etc. 
 
-Vex is a robotics kit manufacture, I used them in my Robotics class. The blender workflow taught in the class didn't meet my satisfaction, so I did this. You can learn more about vex [here](https://www.vexrobotics.com/). 
+VEX V5 is the robotics kit we use for VEX Robotics Competetion, where 2 of our teams have Qualified for the World Championships. 
 
-I created this becuase I couldn't find exactly anything like it. This 'library' adds some usefull commands for creating parts for the vex robotics kits with a 3D printer. I have a chasis I made for my robotics class as an example. The code isn't perfect, and would be totally open to someone fixing it up a little. Hope this helps someone!
+
+## Syntax Ideas
+
+```openscad
+
+
+1x1x35Aluminum_Angle();
+translate(holes([0,2,1]))
+    rotate([90,0,0])
+        1x2x1x25_C_Channel();
+
+
+```
