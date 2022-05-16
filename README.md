@@ -19,3 +19,9 @@ translate(holes([0,2,1]))
 
 
 ```
+
+## Feature ideas
+ 
+ use mirror() and maybe a half(function)  to beable to code one side of a robot.
+ 
+ Measure the bounding box in inches.
