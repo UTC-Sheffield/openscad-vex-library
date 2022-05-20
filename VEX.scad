@@ -1,3 +1,15 @@
+include <BOSL2/std.scad>
+include <BOSL2/gears.scad>
+
+module cubic_barbell(s=100, anchor=CENTER, spin=0, orient=UP) {
+    attachable(anchor,spin,orient, size=[s*3,s,s]) {
+        union() {
+            xcopies(2*s) cube(s, center=true);
+            xcyl(h=2*s, d=s/4);
+        }
+        children();
+    }
+}
 
 //modules
 module onebyoneR(){
@@ -40,21 +52,71 @@ module onebyoneRSide_fill(length = 1, height = 1){
 	translate([3, 0, 3]) rotate([0, -90, 0]) onebyoneR_fill(length = length, width = height);	
 }
 
-module 1x1x35_Angle(){
-    onebyoneRSide_fill(35, 1);
+module 1x1x35_Angle(anchor=BACK+RIGHT, spin=0, orient=UP){
+    attachable(anchor, spin, orient, size=holes(1,35,1)) {
+        union(){
+            fwd(hole(12.5)) onebyoneRSide_fill(35, 1);
+        }
+        children();
+    }
 }
 
-module 1x2x1x25_C_Channel(){
-    onebyoneRSide_fill(25, 2);
-    mirror([1,0,0]) translate(holes(-2,0,0))
-        onebyoneRSide_fill(25, 2);
+//1x1x35_Angle();
+
+// FIXME there is an extra row of holes in the middle
+module 1x2x1x25_C_Channel(anchor=BACK+RIGHT, spin=0, orient=UP){
+    attachable(anchor, spin, orient, size=holes(1,25,1)) {
+        union(){
+            fwd(hole(12.5)) onebyoneRSide_fill(25, 1);
+            fwd(hole(12.5)) right(hole(2)) xflip() onebyoneRSide_fill(25, 1);}
+        children();
+    }
+}
+//1x2x1x25_C_Channel();
+
+module 1x1x1x25_C_Channel(anchor=BACK+RIGHT, spin=0, orient=UP){
+    attachable(anchor, spin, orient, size=holes(1,25,1)) {
+        union(){
+            fwd(hole(12.5)) onebyoneRSide_fill(25, 1);
+            fwd(hole(12.5)) right(hole(1)) xflip() onebyoneRSide_fill(25, 0);
+        }
+        children();
+    }
+}
+//1x1x1x25_C_Channel();
+
+module wheel(anchor=LEFT, spin=0, orient=UP){
+    attachable(anchor, spin, orient, size=[20,120,120]) {
+        union(){
+            yrot(90) cylinder(h=20, r=60);
+        }
+        children();
+    }
 }
 
-module 1x1x1x25_C_Channel(){
-    onebyoneRSide_fill(25, 1);
-    mirror([1,0,0]) translate(holes(-2,0,0))
-        onebyoneRSide_fill(25, 1);
+
+module gear36(anchor=LEFT, spin=0, orient=UP){
+    attachable(anchor, spin, orient, size=[4,90,90]) {
+        union(){
+            yrot(90) spur_gear(4, 36, 5, 4);
+        }
+        children();
+    }
 }
+gear36();
+
+module spacer(anchor=LEFT, spin=0, orient=UP){
+    attachable(anchor, spin, orient, size=[5,5,5]) {
+        union(){
+            yrot(90) cylinder(h=5, r=5);
+        }
+        children();
+    }
+}
+spacer();
+
+function hole(n)
+    =12.72*n;
 
 function holes(x,y,z)
     =[x*12.72, y*12.72, z*12.72];
