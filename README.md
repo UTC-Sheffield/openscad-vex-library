@@ -10,18 +10,14 @@ VEX V5 is the robotics kit we use for VEX Robotics Competetion, where 2 of our t
 ## Syntax Ideas
 
 ```openscad
-
-
-1x1x35Aluminum_Angle();
-translate(holes([0,2,1]))
-    rotate([90,0,0])
+mirror(x)
+    half_of() 1x1x1x25_C_Channel();
+    up(hole(2)) rotate_x(90)
         1x2x1x25_C_Channel();
-
-
 ```
 
 ## Feature ideas
  
- use mirror() and maybe a half(function)  to beable to code one side of a robot.
+ use mirror() and maybe a half(function)  to beable to code one side of a robot. To make this work we will be taking inspiration from and using https://github.com/revarbat/BOSL2/
  
- Measure the bounding box in inches.
+ Measure the bounding box in inches (do we need to use https://github.com/thehans/FunctionalOpenSCAD so we know how big everything is?)
