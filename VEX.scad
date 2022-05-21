@@ -1,6 +1,11 @@
 include <BOSL2/std.scad>
 include <BOSL2/gears.scad>
 
+
+module 18x18x18(iDown=0, iFwd=0){
+    %down(iDown) fwd(iFwd) cube(size=457.2,  anchor=FRONT+BOTTOM);
+}
+
 module cubic_barbell(s=100, anchor=CENTER, spin=0, orient=UP) {
     attachable(anchor,spin,orient, size=[s*3,s,s]) {
         union() {

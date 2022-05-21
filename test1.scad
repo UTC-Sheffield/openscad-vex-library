@@ -2,7 +2,6 @@
 include <BOSL2/std.scad>
 use <VEX.scad>
 
-//#bounding_box()
 module oneside(){
     1x2x1x25_C_Channel(spin=90, anchor=CENTER)
         position(FRONT+RIGHT) 1x2x1x25_C_Channel(orient=DOWN, spin=-90)
@@ -15,6 +14,4 @@ module oneside(){
 
 oneside();
 xflip() oneside();
-
-//
-
+18x18x18(60, 20);
