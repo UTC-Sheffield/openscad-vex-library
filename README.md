@@ -10,10 +10,18 @@ VEX V5 is the robotics kit we use for VEX Robotics Competetion, where 2 of our t
 ## Syntax Ideas
 
 ```openscad
-mirror(x)
-    half_of() 1x1x1x25_C_Channel();
-    up(hole(2)) rotate_x(90)
-        1x2x1x25_C_Channel();
+module oneside(){
+    1x2x1x25_C_Channel(spin=90, anchor=CENTER)
+        position(FRONT+RIGHT) 1x2x1x25_C_Channel(orient=DOWN, spin=-90)
+        union(){
+            position(FRONT+RIGHT) back(hole(3)) spacer() position(RIGHT) wheel();
+            position(FRONT+LEFT) back(hole(3)) spacer() position(RIGHT) gear36();
+            position(BACK+RIGHT) fwd(hole(3)) spacer() position(RIGHT) wheel();
+        }
+}
+
+oneside();
+xflip() oneside();
 ```
 
 ## Feature ideas
