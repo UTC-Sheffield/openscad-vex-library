@@ -54,7 +54,7 @@ module onebyoneRSide_fill(length = 1, height = 1){
 
 module 1x1x35_Angle(anchor=BACK+RIGHT, spin=0, orient=UP){
     attachable(anchor, spin, orient, size=holes(1,35,1)) {
-        union(){
+        color("slategray") union(){
             fwd(hole(12.5)) onebyoneRSide_fill(35, 1);
         }
         children();
@@ -66,7 +66,7 @@ module 1x1x35_Angle(anchor=BACK+RIGHT, spin=0, orient=UP){
 // FIXME there is an extra row of holes in the middle
 module 1x2x1x25_C_Channel(anchor=BACK+RIGHT, spin=0, orient=UP){
     attachable(anchor, spin, orient, size=holes(1,25,1)) {
-        union(){
+        color("slategray") union(){
             fwd(hole(12.5)) onebyoneRSide_fill(25, 1);
             fwd(hole(12.5)) right(hole(2)) xflip() onebyoneRSide_fill(25, 1);}
         children();
@@ -76,7 +76,8 @@ module 1x2x1x25_C_Channel(anchor=BACK+RIGHT, spin=0, orient=UP){
 
 module 1x1x1x25_C_Channel(anchor=BACK+RIGHT, spin=0, orient=UP){
     attachable(anchor, spin, orient, size=holes(1,25,1)) {
-        union(){
+        color("slategray") union(){
+            yrot(90) cylinder(h=20, r=60);
             fwd(hole(12.5)) onebyoneRSide_fill(25, 1);
             fwd(hole(12.5)) right(hole(1)) xflip() onebyoneRSide_fill(25, 0);
         }
@@ -88,7 +89,9 @@ module 1x1x1x25_C_Channel(anchor=BACK+RIGHT, spin=0, orient=UP){
 module wheel(anchor=LEFT, spin=0, orient=UP){
     attachable(anchor, spin, orient, size=[20,120,120]) {
         union(){
-            yrot(90) cylinder(h=20, r=60);
+            yrot(90) color("green") cylinder(h=20, r=60);
+            color("gray")
+            yrot(90) cylinder(h=20, r=50);
         }
         children();
     }
@@ -97,7 +100,7 @@ module wheel(anchor=LEFT, spin=0, orient=UP){
 
 module gear36(anchor=LEFT, spin=0, orient=UP){
     attachable(anchor, spin, orient, size=[4,90,90]) {
-        union(){
+        color("green") union(){
             yrot(90) spur_gear(4, 36, 5, 4);
         }
         children();
@@ -107,7 +110,7 @@ gear36();
 
 module spacer(anchor=LEFT, spin=0, orient=UP){
     attachable(anchor, spin, orient, size=[5,5,5]) {
-        union(){
+        color("white") union(){
             yrot(90) cylinder(h=5, r=5);
         }
         children();
