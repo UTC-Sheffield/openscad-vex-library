@@ -57,7 +57,7 @@ module onebyoneRSide_fill(length = 1, height = 1){
 	translate([3, 0, 3]) rotate([0, -90, 0]) onebyoneR_fill(length = length, width = height);	
 }
 
-module 1x1x35_Angle(anchor=BACK+RIGHT, spin=0, orient=UP){
+module 1x1x35_Angle(anchor=BACK+RIGHT+BOTTOM, spin=0, orient=UP){
     attachable(anchor, spin, orient, size=holes(1,35,1)) {
         color("slategray") union(){
             fwd(hole(12.5)) onebyoneRSide_fill(35, 1);
@@ -69,8 +69,8 @@ module 1x1x35_Angle(anchor=BACK+RIGHT, spin=0, orient=UP){
 //1x1x35_Angle();
 
 // FIXME there is an extra row of holes in the middle
-module 1x2x1x25_C_Channel(anchor=BACK+RIGHT, spin=0, orient=UP){
-    attachable(anchor, spin, orient, size=holes(1,25,1)) {
+module 1x2x1x25_C_Channel(anchor=BACK+RIGHT+BOTTOM, spin=0, orient=UP){
+    attachable(anchor, spin, orient, size=holes(1,25,2)) {
         color("slategray") union(){
             fwd(hole(12.5)) onebyoneRSide_fill(25, 1);
             fwd(hole(12.5)) right(hole(2)) xflip() onebyoneRSide_fill(25, 1);}
@@ -128,3 +128,6 @@ function hole(n)
 
 function holes(x,y,z)
     =[x*12.72, y*12.72, z*12.72];
+
+
+echo(hole(20));
