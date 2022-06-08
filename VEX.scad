@@ -77,6 +77,18 @@ module 1x2x1x25_C_Channel(anchor=BACK+RIGHT+BOTTOM, spin=0, orient=UP){
         children();
     }
 }
+
+
+module test1(anchor=BACK+RIGHT+BOTTOM, spin=0, orient=UP){
+    attachable(anchor, spin, orient, size=holes(1,25,2)) {
+        color("green") union(){
+            fwd(hole(12.5)) onebyoneRSide_fill(25, 1);
+            fwd(hole(12.5)) right(hole(2)) xflip() onebyoneRSide_fill(25, 1);}
+        children();
+    }
+}
+
+
 //1x2x1x25_C_Channel();
 
 module 1x1x1x25_C_Channel(anchor=BACK+RIGHT, spin=0, orient=UP){

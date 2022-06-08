@@ -14,12 +14,20 @@ module oneside(){
 }
 
 module postest(){
-    1x2x1x25_C_Channel()
+    //1x2x1x25_C_Channel();
         //leftangle() 
-        1x2x1x25_C_Channel(orient=DOWN, spin=90);
+       // 1x2x1x25_C_Channel(orient=DOWN, spin=90);
 }
 
-postest();
+//postest();
 //oneside();
 //xflip() oneside();
 //18x18x18(60, 20);
+
+test1()
+    rightangle()
+    test(1)
+
+test1()
+    position(BACK + BOTTOM)
+    test1(orient=DOWN, spin=90);
