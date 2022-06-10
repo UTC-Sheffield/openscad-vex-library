@@ -81,7 +81,8 @@ module 1x2x1x25_C_Channel(anchor=BACK+RIGHT+BOTTOM, spin=0, orient=UP){
 
 module test1(anchor=BACK+LEFT+BOTTOM, spin=0, orient=UP){
     attachable(anchor, spin, orient, size=holes(2,25,1)) {
-        color("green") union(){
+        color("green")
+        translate(holes2(-1,12.5,-1, 0, 0, 2)) union(){
             #cube(holes2(2,25,1, 0, 0, 1));
             onebyoneRSide_fill(25, 1);
              right(hole(2)) xflip() onebyoneRSide_fill(25, 1);}
