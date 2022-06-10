@@ -79,15 +79,17 @@ module 1x2x1x25_C_Channel(anchor=BACK+RIGHT+BOTTOM, spin=0, orient=UP){
 }
 
 
-module test1(anchor=BACK+RIGHT+BOTTOM, spin=0, orient=UP){
-    attachable(anchor, spin, orient, size=holes(1,25,2)) {
+module test1(anchor=BACK+LEFT+BOTTOM, spin=0, orient=UP){
+    attachable(anchor, spin, orient, size=holes(2,25,1)) {
         color("green") union(){
-            fwd(hole(12.5)) onebyoneRSide_fill(25, 1);
-            fwd(hole(12.5)) right(hole(2)) xflip() onebyoneRSide_fill(25, 1);}
+            #cube(holes2(2,25,1, 0, 0, 1));
+            onebyoneRSide_fill(25, 1);
+             right(hole(2)) xflip() onebyoneRSide_fill(25, 1);}
         children();
     }
 }
 
+test1();
 
 //1x2x1x25_C_Channel();
 
@@ -123,7 +125,8 @@ module gear36(anchor=LEFT, spin=0, orient=UP){
         children();
     }
 }
-gear36();
+
+//gear36();
 
 module spacer(anchor=LEFT, spin=0, orient=UP){
     attachable(anchor, spin, orient, size=[5,5,5]) {
@@ -133,7 +136,7 @@ module spacer(anchor=LEFT, spin=0, orient=UP){
         children();
     }
 }
-spacer();
+//spacer();
 
 function hole(n)
     =12.72*n;
@@ -141,5 +144,11 @@ function hole(n)
 function holes(x,y,z)
     =[x*12.72, y*12.72, z*12.72];
 
+function edge(x,y,z)
+    =[x*1.5, y*1.5, z*1.5];
 
-echo(hole(20));
+function holes2(x,y,z,a,b,c)
+    =[(x*12.72)+(a*3), (y*12.72)+(b*3), (z*12.72+c*3)];
+
+
+echo(holes2(1,1,1,0,0,0));
